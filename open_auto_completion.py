@@ -28,3 +28,12 @@ class OpenAutoCompletionCommand(sublime_plugin.TextCommand):
             window.run_command("auto_complete", {'disable_auto_insert': True, 'next_completion_if_showing': False})
 
 
+class OpenAutoCompletionEventListener(sublime_plugin.EventListener):
+
+    def on_query_context(self, view, key, operator, operand, match_all):
+
+        if key == "open_auto_completion_context":
+            return not view.is_read_only()
+
+        return None
+
