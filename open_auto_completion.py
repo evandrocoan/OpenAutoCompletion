@@ -31,6 +31,9 @@ class OpenAutoCompletionCommand(sublime_plugin.TextCommand):
 class OpenAutoCompletionEventListener(sublime_plugin.EventListener):
 
     def on_query_context(self, view, key, operator, operand, match_all):
+        """
+            Allow the standard command to work even when `plugin_host` is not running.
+        """
 
         if key == "open_auto_completion_context":
             return not view.is_read_only()
