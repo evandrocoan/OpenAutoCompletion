@@ -36,7 +36,7 @@ class OpenAutoCompletionEventListener(sublime_plugin.EventListener):
         """
 
         if key == "open_auto_completion_context":
-            return not view.is_read_only()
+            return not view.is_read_only() and view.settings().get('auto_complete', False)
 
         return None
 
